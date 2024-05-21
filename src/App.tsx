@@ -89,7 +89,6 @@ function App() {
           handleInit={() => { setGrid(init()) }}
           disabled={running}
         />
-        {/* <button disabled={running} onClick={() => { setGrid(init()) }}>Initialize</button> */}
         <button onClick={() => { setRunning(!running) }}>{running ? 'Stop' : 'Run'}</button>
       </div>
     </div>
