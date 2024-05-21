@@ -21,28 +21,30 @@ function Rules({ density, intervalVal, gridSize, handleSetRules, handleInit, dis
               <label htmlFor='density'>Density (0-9):</label>
               <input 
                 disabled={disabled}
-                type='text' 
+                type='number' 
                 id='density' 
                 min={0}
                 max={9}
                 defaultValue={density} 
                 onChange={(e) => { handleSetRules({ density: Number(e.target.value), intervalVal, gridSize }) }}
               />
-              <label htmlFor='interval'>Interval (ms):</label>
+              <label htmlFor='interval'>Interval (ms, 10-10000):</label>
               <input 
                 disabled={disabled}
-                type='text' 
+                type='number' 
                 id='interval' 
-                min={0}
+                min={10}
+                max={10000}
                 defaultValue={intervalVal} 
                 onChange={(e) => { handleSetRules({ density, intervalVal: Number(e.target.value), gridSize }) }}
               />
-              <label htmlFor='gridSize'>Grid Size (cells):</label>
+              <label htmlFor='gridSize'>Grid Size (cells, 10-200):</label>
               <input 
                 disabled={disabled}
-                type='text' 
+                type='number' 
                 id='gridSize' 
-                min={0}
+                min={10}
+                max={200}
                 defaultValue={gridSize} 
                 onChange={(e) => { handleSetRules({ density, intervalVal, gridSize: Number(e.target.value)}) }}
               />
