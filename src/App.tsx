@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 import Cell from './Cell'
+import Rules from './Rules'
 
-interface RulesType {
+export interface RulesType {
   density: number,      // density value (number, 0 -> 9)
   intervalVal: number,  // time of each life cycle (in MS)
   gridSize: number      // game is played on canvas gridSize x gridSize
@@ -27,7 +28,8 @@ function App() {
       newGrid[i] = []
 
       for (let j = 0; j < newGrid.length; j++) {
-        newGrid[i].push(Math.floor(Math.random() * 10) <= rules.density ? 1 : 0)
+        let random = Math.random() * 10
+        newGrid[i].push(Math.floor(random) <= rules.density ? 1 : 0)
       }
     }
 
@@ -68,6 +70,7 @@ function App() {
 
   return (
     <div className='gameContainer'>
+      <h1>Conway's Game of Life</h1>
       <div className='cellCol'>
         {grid.map(row => {
           return <div key={uuidv4()} className='cellRow'>
@@ -78,7 +81,15 @@ function App() {
         })}
       </div>
       <div className='buttonContainer'>
-        <button onClick={() => { setGrid(init()) }}>Initialize</button>
+        <Rules 
+          density={rules.density} 
+          intervalVal={rules.intervalVal} 
+          gridSize={rules.gridSize} 
+          handleSetRules={(newRules: RulesType) => { setRules(newRules) }}
+          handleInit={() => { setGrid(init()) }}
+          disabled={running}
+        />
+        {/* <button disabled={running} onClick={() => { setGrid(init()) }}>Initialize</button> */}
         <button onClick={() => { setRunning(!running) }}>{running ? 'Stop' : 'Run'}</button>
       </div>
     </div>

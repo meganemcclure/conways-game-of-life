@@ -1,0 +1,38 @@
+.rulesContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.gameRulesButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  min-width: 200px;
+}
+
+.icon {
+  height: 10px;
+  width: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.initButton {
+  max-width: 100px;
+  margin: 20px;
+  border-color: white;
+  align-self: center;
+}
